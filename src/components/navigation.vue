@@ -1,5 +1,12 @@
 <template>
   <div class="navigation">
+    <!--  提问模态框  -->
+    <el-dialog
+        title="新的问题"
+        v-model="isShowAskModal"
+    >
+      <ask-modal @setAskModalVisible="setAskModalVisible"/>
+    </el-dialog>
     <div class="inner">
       <div class="left">
         <div class="header-logo">
@@ -25,6 +32,19 @@
           </li>
         </ul>
       </div>
+      <div class="middle">
+        <el-input
+            placeholder="请输入内容"
+            style="width: 300px;"
+        >
+          <template #append>
+            <el-button><el-icon><search /></el-icon></el-button>
+          </template>
+        </el-input>
+        <el-button type="primary" class="btn-ask" @click="setAskModalVisible(true)">
+          提问
+        </el-button>
+      </div>
       <div class="right">
         <!--    头像框    -->
         <profile></profile>
@@ -35,12 +55,27 @@
 
 <script lang="ts">
 import profile from "@/views/profile/index.vue"
-import {defineComponent} from 'vue'
+import askModal from "@/components/askModal.vue";
+
+import {defineComponent, ref} from 'vue'
 
 export default defineComponent({
   name: "navigation",
   components: {
-    profile
+    profile,
+    askModal,
+  },
+  setup() {
+    const isShowAskModal = ref(false)
+    const centerDialogVisible = ref(false)
+    function setAskModalVisible(flag:boolean) {
+      isShowAskModal.value = flag;
+    }
+    return {
+      isShowAskModal,
+      centerDialogVisible,
+      setAskModalVisible,
+    }
   }
 })
 </script>
@@ -58,6 +93,12 @@ export default defineComponent({
     max-width: @max-width;
     align-items: center;
     justify-content: space-between;
+    .middle {
+      display: flex;
+      .btn-ask{
+        margin-left: 20px;
+      }
+    }
     .left {
       display: flex;
       align-items: center;

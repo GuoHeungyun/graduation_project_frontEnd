@@ -11,6 +11,9 @@ const discovery = () => import("@/views/discovery/index.vue");
 const people = () => import("@/views/profile/people.vue");
 const information = () => import("@/views/profile/information.vue");
 const modify = () => import("@/views/profile/modify.vue");
+const homeList = () => import("@/views/home/components/homeList.vue");
+const questionRecommendation = () => import("@/views/home/components/questionRecommendation.vue")
+const hotList = () => import("@/views/home/components/hotList.vue")
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -49,7 +52,24 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'home',
         name: 'homePage',
-        component: home
+        component: home,
+        children:[
+          {
+            path: 'homelist',
+            name: 'homeList',
+            component: homeList,
+          },
+          {
+            path: 'questionrecommendation',
+            name: 'questionRecommendation',
+            component: questionRecommendation,
+          },
+          {
+            path: 'hotlist',
+            name: 'hotList',
+            component: hotList,
+          },
+        ]
       },
       {
         path: 'moment',

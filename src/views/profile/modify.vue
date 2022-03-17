@@ -5,7 +5,7 @@
           :show-file-list="false"
           :before-upload="beforeAvatarUpload"
           :on-success="handleAvatarSuccess"
-          action="http://localhost:8080/api/people/upload"
+          action="http://localhost:8088/api/people/upload"
           :data="userdata"
       >
         <div class="avatar-wrap">

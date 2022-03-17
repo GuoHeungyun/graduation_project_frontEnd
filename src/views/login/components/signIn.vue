@@ -38,6 +38,7 @@ export default defineComponent({
     const router = useRouter();
     const store = useStore()
     const userData = reactive({
+      id: '',
       username: '',
       phone: '',
       password: '',
@@ -58,6 +59,7 @@ export default defineComponent({
           userData.password = res.data.user[0][0].password;
           userData.avatar = res.data.user[0][0].user_avatar;
           userData.introduction = res.data.user[0][0].introduction;
+          userData.id = res.data.user[0][0].id;
           store.commit('setUserInfo',userData);
           router.replace('/lexiang');
         }else {
