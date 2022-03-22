@@ -26,7 +26,7 @@ import {defineComponent, reactive, ref, Ref} from 'vue'
 import { ElMessage } from 'element-plus'
 import richTextEditor from "@/components/richTextEditor.vue";
 import {useStore} from 'vuex'
-import {questionDataType} from '@/ts/paramType.ts'
+import {questionDataType} from '@/ts/apiParamType.ts'
 import {createQuestion} from '@/api/question.ts'
 
 export default defineComponent({
@@ -46,13 +46,13 @@ export default defineComponent({
     const userInfo = reactive(store.getters.getUserInfo);
     //点击了确认问题
     function confirmQuestion(){
-      description.value = editor.value.getEditorContent()
+      description.value = editor.value.getEditorContent()   //获取全部内容
       excerpt.value = editor.value.getText().slice(0, 100); //获取简略描述
       if (title.value){
         let questionData = reactive({
           title: title.value,
           description: description.value,
-          creatorId: userInfo.id,
+          creatorId: userInfo.userId,
           excerpt: excerpt.value,
         })
         uploadQuestion(questionData)

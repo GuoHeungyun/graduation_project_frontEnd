@@ -7,7 +7,7 @@
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item>
-            <router-link :to="{name:'people'}" custom v-slot="{navigate}">
+            <router-link :to="{name:'people',query:{userId:userId}}" custom v-slot="{navigate}">
               <div @click="navigate" @keypress.enter="navigate" role="link">我的主页</div>
             </router-link>
           </el-dropdown-item>
@@ -28,11 +28,14 @@ import { useRouter } from 'vue-router'
 export default defineComponent({
   name: "index",
   setup(){
+    const store = useStore()
     const {imageUrl} = getAvatar();
     const { logout } = logoutFn();
+    let userId = ref(store.getters.getUserInfo.userId);
     return {
       imageUrl,
-      logout
+      userId,
+      logout,
     }
   }
 })

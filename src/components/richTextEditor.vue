@@ -5,12 +5,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent,onMounted,ref} from 'vue';
+import {defineComponent,onMounted,ref, PropType} from 'vue';
 import E from "wangeditor"
 
 interface propsType{
   content:string,
   placeHolder: string,
+  menus: Array<any>,
 }
 
 export default defineComponent({
@@ -24,6 +25,10 @@ export default defineComponent({
       type: String,
       default: ""
     },
+    menus: {
+      type: Array as PropType<Array<any>>,
+      default: ()=> ['list', 'justify', 'quote', 'image', 'splitLine',]
+    },
   },
   setup(prop:propsType,context){
     let editor:any
@@ -32,13 +37,17 @@ export default defineComponent({
       editor.config.height = 300
       editor.config.placeholder = prop.placeHolder
       //配置显示菜单
-      editor.config.menus = [
-        'list',
-        'justify',
-        'quote',
-        'image',
-        'splitLine',
-      ]
+      if (prop.menus){
+        editor.config.menus = prop.menus
+      }else{
+        editor.config.menus = [
+          'list',
+          'justify',
+          'quote',
+          'image',
+          'splitLine',
+        ]
+      }
       //限制上传图片的数量
       editor.config.uploadImgMaxLength = 1;
       // 配置 server 接口地址

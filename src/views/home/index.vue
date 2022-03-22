@@ -1,7 +1,6 @@
 <template>
   <div class="content">
     <div class="left-box">
-<!--      <home-list></home-list>-->
       <main-list-wrapper></main-list-wrapper>
     </div>
     <div class="right-box">
@@ -12,15 +11,11 @@
 
 <script lang='ts'>
 import {defineComponent} from 'vue'
-import questionCard from './components/questionCard.vue'
-import homeList from "@/views/home/components/homeList.vue";
 import mainListWrapper from "@/views/home/components/mainListWrapper.vue";
 
 export default defineComponent({
   name: "index",
   components: {
-    // questionCard,
-    // homeList,
     mainListWrapper,
   },
   setup(){
@@ -33,9 +28,6 @@ export default defineComponent({
 
 <style scoped lang="less">
 .content {
-  max-width: @max-width;
-  min-width: @min-width;
-  margin: 0 auto;
   display: flex;
   .left-box{
     width: 100%;

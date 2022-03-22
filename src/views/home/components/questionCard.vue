@@ -67,7 +67,7 @@ function judge(textNode:any,isOverflow:Ref) {
     .operation{
       display: flex;
       height: 40px;
-      align-items: end;
+      align-items: flex-end;
       div{
         color: #8590a6;
         cursor: pointer;

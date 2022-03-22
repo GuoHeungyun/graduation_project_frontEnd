@@ -15,8 +15,15 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .main {
-  height: 100vh;
   width: 100%;
   background-color: #F6F6F6;
+}
+</style>
+
+<style lang="less">
+.set-line-height{
+  p{
+    line-height: @line-height-big;
+  }
 }
 </style>

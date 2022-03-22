@@ -16,7 +16,7 @@
         <ul>
           <li>
 <!--            :to="{name: 'home'}"-->
-            <router-link to="/lexiang/home" custom v-slot="{navigate, isActive}">
+            <router-link :to="{name: 'homePage'}" custom v-slot="{navigate, isActive}">
               <div @click="navigate" @keypress.enter="navigate" role="link" :class="{'active':isActive}">首页</div>
             </router-link>
           </li>

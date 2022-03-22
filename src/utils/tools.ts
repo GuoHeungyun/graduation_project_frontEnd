@@ -7,3 +7,12 @@ export const checkPhone = (value:string):boolean => {
         return false;
     }
 }
+
+//获取html字符串中第一张图片路径
+export const getImgUrl = function(str:any){
+    let data = '';
+    str.replace(/]*src=['"]([^'"]+)[^>]*>/, function (match:any, capture:any) {
+        data = capture;
+    });
+    return data
+}

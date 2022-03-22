@@ -24,6 +24,7 @@
 import {defineComponent, ref, reactive} from 'vue'
 import { ElMessage } from 'element-plus'
 import {useStore} from 'vuex'
+import {serverLocation} from "@/api/serverLocation.ts"
 
 import modifyRight from './components/modifyRight.vue'
 
@@ -56,7 +57,7 @@ export default defineComponent({
     //修改头像的两个钩子函数
     const handleAvatarSuccess = (res: ElUploadProgressEvent, file: UploadFile) => {
       // imageUrl.value = URL.createObjectURL(file.raw)
-      imageUrl.value = 'http://127.0.0.1:7001/'+res;
+      imageUrl.value = serverLocation +res;
       store.commit('setAvatarUrl',res)
       //换头像后刷新页面
       location.reload();

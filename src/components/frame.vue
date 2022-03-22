@@ -1,11 +1,13 @@
 <template>
   <div class="home">
     <navigation></navigation>
-    <router-view v-slot="{ Component }">
-      <keep-alive :include="['homePage','moment','discovery']">
-        <component :is="Component"></component>
-      </keep-alive>
-    </router-view>
+    <div class="main">
+      <router-view v-slot="{ Component }">
+        <keep-alive :include="['homePage','moment','discovery']">
+          <component :is="Component"></component>
+        </keep-alive>
+      </router-view>
+    </div>
   </div>
 </template>
 
@@ -21,4 +23,11 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
+.home{
+  .main{
+    max-width: @max-width;
+    min-width: @min-width;
+    margin: 0 auto;
+  }
+}
 </style>

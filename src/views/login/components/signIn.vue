@@ -38,7 +38,7 @@ export default defineComponent({
     const router = useRouter();
     const store = useStore()
     const userData = reactive({
-      id: '',
+      userId: '',
       username: '',
       phone: '',
       password: '',
@@ -49,7 +49,7 @@ export default defineComponent({
     const signInClick = (event:PointerEvent) =>{
       event.preventDefault();
       findUser(userData).then(res =>{
-        if (res.data.user[0][0].id){
+        if (res.data.user[0][0].user_id){
           sessionStorage.setItem('username', res.data.user[0][0].username)
           sessionStorage.setItem('phone', res.data.user[0][0].phone)
           sessionStorage.setItem('password', res.data.user[0][0].password)
@@ -59,7 +59,7 @@ export default defineComponent({
           userData.password = res.data.user[0][0].password;
           userData.avatar = res.data.user[0][0].user_avatar;
           userData.introduction = res.data.user[0][0].introduction;
-          userData.id = res.data.user[0][0].id;
+          userData.userId = res.data.user[0][0].user_id;
           store.commit('setUserInfo',userData);
           router.replace('/lexiang');
         }else {

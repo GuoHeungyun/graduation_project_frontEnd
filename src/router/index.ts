@@ -14,6 +14,7 @@ const modify = () => import("@/views/profile/modify.vue");
 const homeList = () => import("@/views/home/components/homeList.vue");
 const questionRecommendation = () => import("@/views/home/components/questionRecommendation.vue")
 const hotList = () => import("@/views/home/components/hotList.vue")
+const questionDetail = () => import("@/views/questionDetail/index.vue")
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -46,13 +47,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/lexiang',
     name: 'home',
-    redirect: '/lexiang/home',
+    redirect: '/lexiang/home/homelist',
     component: homeFrame,
     children: [
       {
         path: 'home',
         name: 'homePage',
         component: home,
+        redirect: '/lexiang/home/homelist',
         children:[
           {
             path: 'homelist',
@@ -82,7 +84,7 @@ const routes: Array<RouteRecordRaw> = [
         component: discovery
       },
       {
-        path: 'people',
+        path: 'people/',
         name: 'people',
         component: people,
         redirect: '/lexiang/people/information',
@@ -101,6 +103,11 @@ const routes: Array<RouteRecordRaw> = [
       }
     ]
   },
+  {
+    path: '/question_detail/:questionId',
+    name: 'questionDetail',
+    component: questionDetail
+  }
 ]
 
 const router = createRouter({

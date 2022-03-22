@@ -1,6 +1,6 @@
 import axios from "@/utils/request";
 
-import {questionDataType, questionIdType } from '@/ts/paramType.ts'
+import {questionDataType } from '@/ts/apiParamType.ts'
 
 export const createQuestion = (questionData:questionDataType) =>{
     return axios({
@@ -10,10 +10,12 @@ export const createQuestion = (questionData:questionDataType) =>{
     })
 }
 
-export const getQuestion = (data?:questionIdType) => {
+export const getQuestion = (id?:string) => {
     return axios({
-        url:'api/get_question',
+        url:'/api/get_question',
         method: 'POST',
-        data
+        data: {
+            id: id
+        }
     })
 }

@@ -1,4 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const serverLocation1 = require('./src/api/serverLocation1.ts')
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 module.exports = {
     devServer:{
