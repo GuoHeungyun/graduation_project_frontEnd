@@ -219,6 +219,9 @@ export default defineComponent({
               color: #8590a6;
               cursor: pointer;
               margin-left: 16px;
+              display: flex;
+              align-items: center;
+              justify-content:center;
             }
           }
         }
